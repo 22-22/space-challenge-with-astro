@@ -1,11 +1,31 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageTitle = "Home";
 ---
 
-<Layout>
-	<Welcome />
+<Layout pageTitle={pageTitle}>
+  <div
+    class="min-h-screen bg-[url(../assets/home/background-home-desktop.jpg)] bg-cover"
+  >
+    <Header />
+    <main class="text-white">
+      <div>
+        <div>
+          <h2>So, you want to travel to</h2>
+          <h1>Space</h1>
+          <p>
+            Let’s face it; if you want to go to space, you might as well
+            genuinely go to outer space and not hover kind of on the edge of it.
+            Well sit back, and relax because we’ll give you a truly out of this
+            world experience!
+          </p>
+        </div>
+        <div>
+          <button>Explore</button>
+        </div>
+      </div>
+    </main>
+  </div>
 </Layout>

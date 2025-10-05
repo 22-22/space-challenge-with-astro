@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# IDEs and editors
+/.vscode
+
+# additional materials
+space-tourism-website-figma
+space-tourism-website-main

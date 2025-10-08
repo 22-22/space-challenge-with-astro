@@ -10,20 +10,28 @@ const pageTitle = "Home";
     class="min-h-screen bg-[url(../assets/home/background-home-desktop.jpg)] bg-cover"
   >
     <Header />
-    <main class="text-white">
-      <div>
-        <div>
-          <h2>So, you want to travel to</h2>
-          <h1>Space</h1>
-          <p>
+    <main>
+      <div
+        class="grid gap-x-8 grid-cols-[minmax(2rem,1fr)_repeat(2,_minmax(0,30rem))_minmax(2rem,1fr)]"
+      >
+        <div class="text-white col-start-2">
+          <h1 class="font-barlow-condensed text-3xl tracking-widest uppercase">
+            So, you want to travel to
+            <span class="font-bellefair text-9xl uppercase">Space</span>
+          </h1>
+          <p class="mt-4 font-barlow">
             Let’s face it; if you want to go to space, you might as well
             genuinely go to outer space and not hover kind of on the edge of it.
             Well sit back, and relax because we’ll give you a truly out of this
             world experience!
           </p>
         </div>
-        <div>
-          <button>Explore</button>
+        <div class="col-start-3 flex justify-end">
+          <a
+            href=""
+            class="inline-grid px-8 aspect-square place-items-center bg-white rounded-full font-bellefair text-4xl text-blue-900 uppercase no-underline"
+            >Explore</a
+          >
         </div>
       </div>
     </main>

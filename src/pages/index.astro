@@ -3,37 +3,36 @@ import Header from "../components/Header.astro";
 import Layout from "../layouts/Layout.astro";
 
 const pageTitle = "Home";
+const bodyImage = "home/background-home-desktop.jpg";
 ---
 
-<Layout pageTitle={pageTitle}>
-  <div
-    class="min-h-screen bg-[url(../assets/home/background-home-desktop.jpg)] bg-cover"
+<Layout pageTitle={pageTitle} bodyImage={bodyImage}>
+  <Header />
+  <main
+    class="flex flex-col md:flex-row items-center gap-4 max-w-7xl mx-auto px-40 pt-[18vh]"
   >
-    <Header />
-    <main>
-      <div
-        class="grid gap-x-8 grid-cols-[minmax(2rem,1fr)_repeat(2,_minmax(0,30rem))_minmax(2rem,1fr)]"
+    <div class="flex-1 text-white">
+      <h1>
+        <p class="font-barlow-condensed text-3xl uppercase">
+          So, you want to travel to
+        </p>
+        <p class="mt-6 font-bellefair text-9xl uppercase tracking-widest">
+          space
+        </p>
+      </h1>
+      <p class="mt-6 font-barlow">
+        Let’s face it; if you want to go to space, you might as well genuinely
+        go to outer space and not hover kind of on the edge of it. Well sit
+        back, and relax because we’ll give you a truly out of this world
+        experience!
+      </p>
+    </div>
+    <div class="flex flex-1 justify-end">
+      <a
+        href=""
+        class="inline-grid px-16 aspect-square place-items-center rounded-full text-4xl text-blue-900 uppercase no-underline bg-white"
+        >Explore</a
       >
-        <div class="text-white col-start-2">
-          <h1 class="font-barlow-condensed text-3xl tracking-widest uppercase">
-            So, you want to travel to
-            <span class="font-bellefair text-9xl uppercase">Space</span>
-          </h1>
-          <p class="mt-4 font-barlow">
-            Let’s face it; if you want to go to space, you might as well
-            genuinely go to outer space and not hover kind of on the edge of it.
-            Well sit back, and relax because we’ll give you a truly out of this
-            world experience!
-          </p>
-        </div>
-        <div class="col-start-3 flex justify-end">
-          <a
-            href=""
-            class="inline-grid px-8 aspect-square place-items-center bg-white rounded-full font-bellefair text-4xl text-blue-900 uppercase no-underline"
-            >Explore</a
-          >
-        </div>
-      </div>
-    </main>
-  </div>
+    </div>
+  </main>
 </Layout>

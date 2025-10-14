@@ -13,7 +13,12 @@ const { pageTitle } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
-  <body>
+  <body
+    class="min-h-screen bg-cover bg-no-repeat
+         bg-[url('/home/background-home-mobile.jpg')]
+         sm:bg-[url('/home/background-home-tablet.jpg')]
+         md:bg-[url('/home/background-home-desktop.jpg')]"
+  >
     <slot />
   </body>
 </html>

@@ -1,11 +1,33 @@
 ---
 import Header from "../components/Header.astro";
-import HomeLayout from "../layouts/HomeLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import mobileBg from "../assets/home/background-home-mobile.jpg";
+import tabletBg from "../assets/home/background-home-tablet.jpg";
+import desktopBg from "../assets/home/background-home-desktop.jpg";
 
 const pageTitle = "Home";
 ---
 
-<HomeLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle}>
+  <img
+    class="fixed top-0 left-0 w-full h-full -z-10"
+    src={mobileBg.src}
+    alt="planet seen from space"
+    fetchpriority="high"
+  />
+  <img
+    class="hidden sm:block fixed top-0 left-0 w-full h-full -z-10"
+    src={tabletBg.src}
+    alt="planet seen from space"
+    fetchpriority="high"
+  />
+  <img
+    class="hidden md:block fixed top-0 left-0 w-full h-full -z-10"
+    src={desktopBg.src}
+    alt="planet seen from space"
+    fetchpriority="high"
+  />
+
   <Header />
   <main
     class="flex flex-col md:flex-row items-center gap-32 sm:gap-16 w-full max-w-[90rem] mx-auto px-6 sm:px-32 md:px-40 pt-6 md:pt-[18vh] text-center md:text-left"
@@ -40,4 +62,4 @@ const pageTitle = "Home";
       >
     </div>
   </main>
-</HomeLayout>
+</BaseLayout>

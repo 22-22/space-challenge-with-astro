@@ -1,26 +1,21 @@
 ---
-
+import logo from "../assets/shared/logo.svg";
+import iconHamburger from "../assets/shared/icon-hamburger.svg";
+import Navigation from "./Navigation.astro";
 ---
 
-<header class="py-10 flex items-center">
-  <img
-    class="px-16"
-    src="/src/assets/shared/logo.svg"
-    alt="space travel logo"
-  />
-  <p class="mb-7 flex-1 border-b-2 border-white">-</p>
-  <nav class="w-3xl pl-40 pr-16 py-10 -ml-8 flex justify-start bg-white/30">
-    <ul class="flex gap-12 font-barlow-condensed text-white uppercase">
-      <li>
-        <a href=""><span class="mr-3 font-bold">00</span>Home</a>
-      </li>
-      <li>
-        <a href=""><span class="mr-3 font-bold">01</span>Destination</a>
-      </li>
-      <li><a href=""><span class="mr-3 font-bold">02</span>Crew</a></li>
-      <li>
-        <a href=""><span class="mr-3 font-bold">03</span>Technology</a>
-      </li>
-    </ul>
-  </nav>
+<header class="flex justify-between items-center px-6 py-10">
+  <button class="md:mr-16 cursor-pointer">
+    <img src={logo.src} alt="space travel logo" />
+  </button>
+  <p class="hidden md:flex grow border-b-2 border-white">-</p>
+  <button
+    id="menuOpenBtn"
+    class="block sm:hidden cursor-pointer"
+    aria-controls="primary-navigation"
+    ><span class="sr-only" aria-expanded="false">Menu</span>
+    <img src={iconHamburger.src} alt="mobile menu button" />
+  </button>
+  <Navigation />
 </header>
+<script src="../scripts/menu.ts"></script>

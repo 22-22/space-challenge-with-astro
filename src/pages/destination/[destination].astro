@@ -1,0 +1,101 @@
+---
+import Header from "../../components/Header.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import mobileBg from "../../assets/destination/background-destination-mobile.jpg";
+import tabletBg from "../../assets/destination/background-destination-tablet.jpg";
+import desktopBg from "../../assets/destination/background-destination-desktop.jpg";
+import moon from "../../assets/destination/image-moon.png";
+import mars from "../../assets/destination/image-mars.png";
+import europa from "../../assets/destination/image-europa.png";
+import titan from "../../assets/destination/image-titan.png";
+
+export function getStaticPaths() {
+  return [
+    { params: { destination: "moon" } },
+    { params: { destination: "mars" } },
+    { params: { destination: "europa" } },
+    { params: { destination: "titan" } },
+  ];
+}
+
+const { destination } = Astro.params;
+const planet = [moon, mars, europa, titan].find((planet) =>
+  planet.src.includes(destination)
+);
+
+const pageTitle = "Destination";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <picture>
+    <source srcset={desktopBg.src} media="(min-width: 768px)" />
+    <source srcset={tabletBg.src} media="(min-width: 640px)" />
+    <img
+      src={mobileBg.src}
+      alt="outer space"
+      class="fixed inset-0 w-full h-full object-cover -z-10"
+      fetchpriority="high"
+    />
+  </picture>
+  <Header />
+  <main class="md:max-w-3/4 mx-auto p-6 sm:p-10 md:px-0 text-white">
+    <h2
+      class="sm:mb-10 md:mb-20 text-center sm:text-left sm:text-xl md:text-3xl font-barlow-condensed tracking-[2px] uppercase"
+    >
+      <span class="mr-4 text-blue-100/50 font-bold">01</span>Pick your
+      destination
+    </h2>
+    <div class="flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1">
+        <img
+          src={planet?.src}
+          class="w-[150px] sm:w-[300px] md:w-[480px] aspect-square"
+          alt={destination}
+        />
+      </div>
+      <div class="flex flex-1 flex-col items-center md:items-start">
+        <ul
+          class="flex gap-6 md:gap-9 md:mb-6 font-barlow-condensed tracking-[2px] uppercase text-blue-100"
+        >
+          <li><a href="/destination/moon">Moon</a></li>
+          <li><a href="/destination/mars">Mars</a></li>
+          <li><a href="/destination/europa">Europa</a></li>
+          <li><a href="/destination/titan">Titan</a></li>
+        </ul>
+        <h1
+          class="my-6 text-6xl sm:text-7xl md:text-8xl font-bellefair uppercase"
+        >
+          {destination}
+        </h1>
+        <p
+          class="mb-10 text-base/7 md:text-lg/8 font-barlow text-blue-100 text-center md:text-left text-balance"
+        >
+          Don’t forget to pack your hiking boots. You’ll need them to tackle
+          Olympus Mons, the tallest planetary mountain in our solar system. It’s
+          two and a half times the size of Everest!
+        </p>
+        <div class="w-full border-1 border-blue-100/50"></div>
+        <div
+          class="mt-6 md:mt-10 grid gap-6 grid-cols-1 sm:grid-cols-2 text-center md:text-left"
+        >
+          <div>
+            <p
+              class="mb-3 text-sm font-barlow-condensed tracking-[2px] uppercase text-blue-100"
+            >
+              Avg. distance
+            </p>
+            <p class="text-[28px] font-bellefair uppercase">225 mil. km</p>
+          </div>
+          <div>
+            <p
+              class="mb-3 text-sm font-barlow-condensed tracking-[2px] uppercase text-blue-100"
+            >
+              Est. travel time
+            </p>
+            <p class="text-[28px] font-bellefair uppercase">9 months</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

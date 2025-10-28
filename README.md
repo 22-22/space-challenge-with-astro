@@ -7,15 +7,22 @@ height={1024 / 1.5}
 flex: grow, flex-1
 
 NEW CSS:
+
 pb-[max(6rem,20vh)]
+gap-[min(6vw,6rem)]
+
 grid functions: repeat(), minmax()
+
 clamp() - for more flexible gaps or margins, for example.
 
 ASPECT-RATIO (used for a circular button)
 The aspect-ratio CSS property allows you to define the desired width-to-height ratio of an element's box.
+
+```
 place-items: center;
 padding: 0 2em;
 aspect-ratio: 1;
+```
 
 PLACE-ITEMS: align-items and justify-items
 
@@ -26,11 +33,16 @@ bottom: 0;
 left: 0;
 
 EXAMPLE: BIG ROUND BUTTON
+
+```
 <a class="inline-grid px-10 aspect-square place-items-center rounded-full"></a>
+```
 
 ACCESSIBILITY
 
 // for screen-readers (for visually impared people) - still in the DOM but hidden (exists in TW).
+
+```
 .sr-only {
 position: absolute;
 width: 1px;
@@ -42,6 +54,7 @@ clip: rect(0, 0, 0, 0);
 white-space: nowrap; /_ added line _/
 border: 0;
 }
+```
 
 btn aria-controls="primary-navigation" + ul id="primary-navigation"
 aria-expanded="false"
@@ -53,17 +66,11 @@ HOVER BASED ON PARENT ELEMENT:
 - on parent: group,
 - on children: group-hover:border-b-2, etc.
 
-I added a span inside of a li
+but here it was enough:
 
- <li class="group relative py-10">
-        <a href=""
-          ><span class="sm:hidden md:inline mr-3 font-bold">03</span
-          >Technology</a
-        >
-        <span
-          class="absolute inset-0 w-full group-hover:border-b-4 group-hover:border-white"
-        ></span>
-      </li>
+```
+ <li class={`${isActive ? "border-b-2 border-white" : ""} pb-2 hover:border-b-2 hover:border-white/40`}></li>
+```
 
 MOBILE MENU: transform-x-100% transition
 TO CHECK IF MENU IS OPEN: check data attribute.
@@ -75,11 +82,13 @@ QUESTION:
 
   in the tutorial they used a fancy interesting grid, with the first and the last columns for the margins.
 
+```
   <div class="grid gap-x-8 grid-cols-[minmax(2rem,1fr)_repeat(2,_minmax(0,30rem))_minmax(2rem,1fr)]"
   >
       <div class="col-start-2"></div>
       <div class="col-start-3"></div>
   </div>
+```
 
 - HOW TO MAKE NAVIGATION HALF-TRANSPARENT? ===> backdrop-blur (TW)
 
@@ -90,12 +99,15 @@ QUESTION:
 
 SOLUTION: Instead of attaching the images as bg to body, I added an image stored in assets
 so that images are properly processed by Astro:
+
+```
 <img
     class="hidden md:block fixed top-0 left-0 w-full h-full -z-10"
     src={desktopBg.src}
     alt="planet seen from space"
     fetchpriority="high"
   />
+```
 
 - WHAT'S og:image
 
@@ -119,6 +131,7 @@ WHAT I LEARNED TODAY (18.10.25.)
 
 Image optimisation (images for different screens, gpt advice)
 
+```
   <picture>
     <source srcset={desktopBg.src} media="(min-width: 768px)" />
     <source srcset={tabletBg.src} media="(min-width: 640px)" />
@@ -129,3 +142,6 @@ Image optimisation (images for different screens, gpt advice)
       fetchpriority="high"
     />
   </picture>
+```
+
+align-content: start ===> on grid container, for larger screens for elements not to stretch too far away from each other (i just did max-w)

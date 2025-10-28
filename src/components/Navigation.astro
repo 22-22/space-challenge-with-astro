@@ -1,5 +1,7 @@
 ---
 import iconClose from "../assets/shared/icon-close.svg";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <nav
@@ -18,45 +20,45 @@ import iconClose from "../assets/shared/icon-close.svg";
     id="primary-navigation"
     class="mt-12 sm:mt-0 flex flex-col sm:flex-row gap-12 font-barlow-condensed text-white uppercase"
   >
-    <li class="group relative py-0 sm:py-10">
+    <li
+      data-active={currentPath === "/"}
+      class="py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
+    >
       <a href="/"
         ><span class="sm:hidden md:inline mr-3 font-bold" aria-hidden="true"
           >00</span
         >Home</a
       >
-      <span
-        class="hidden sm:inline absolute inset-0 w-full group-hover:border-b-4 group-hover:border-white -z-10"
-      ></span>
     </li>
-    <li class="group relative py-0 sm:py-10">
+    <li
+      data-active={currentPath.startsWith("/destination")}
+      class="py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
+    >
       <a href="/destination/mars"
         ><span class="sm:hidden md:inline mr-3 font-bold" aria-hidden="true"
           >01</span
         >Destination</a
       >
-      <span
-        class="hidden sm:inline absolute inset-0 w-full group-hover:border-b-4 group-hover:border-white -z-10"
-      ></span>
     </li>
-    <li class="group relative py-0 sm:py-10">
-      <a href=""
+    <li
+      data-active={currentPath.startsWith("/crew")}
+      class="py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
+    >
+      <a href="crew/engineer"
         ><span class="sm:hidden md:inline mr-3 font-bold" aria-hidden="true"
           >02</span
         >Crew</a
       >
-      <span
-        class="hidden sm:inline absolute inset-0 w-full group-hover:border-b-4 group-hover:border-white -z-10"
-      ></span>
     </li>
-    <li class="group relative py-0 sm:py-10">
-      <a href=""
+    <li
+      data-active={currentPath.startsWith("/technology")}
+      class="py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
+    >
+      <a href="technology/launch"
         ><span class="sm:hidden md:inline mr-3 font-bold" aria-hidden="true"
           >03</span
         >Technology</a
       >
-      <span
-        class="hidden sm:inline absolute inset-0 w-full group-hover:border-b-4 group-hover:border-white -z-10"
-      ></span>
     </li>
   </ul>
 </nav>

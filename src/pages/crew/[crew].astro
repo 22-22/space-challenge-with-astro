@@ -1,0 +1,84 @@
+---
+import Header from "../../components/Header.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import mobileBg from "../../assets/crew/background-crew-mobile.jpg";
+import tabletBg from "../../assets/crew/background-crew-tablet.jpg";
+import desktopBg from "../../assets/crew/background-crew-desktop.jpg";
+import { crewData } from "../../constants";
+
+export function getStaticPaths() {
+  return crewData.map((crewMember) => {
+    return {
+      params: { crew: crewMember.id },
+      props: crewMember,
+    };
+  });
+}
+
+const { id, name, image, role, bio } = Astro.props;
+
+const links = crewData.map((crewMember) => {
+  return {
+    id: crewMember.id,
+    href: `/crew/${crewMember.id}`,
+  };
+});
+
+const pageTitle = "Crew";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <picture>
+    <source srcset={desktopBg.src} media="(min-width: 768px)" />
+    <source srcset={tabletBg.src} media="(min-width: 640px)" />
+    <img
+      src={mobileBg.src}
+      alt="A cloudy planet"
+      class="fixed inset-0 w-full h-full object-cover -z-10"
+      fetchpriority="high"
+    />
+  </picture>
+  <Header />
+  <main class="lg:max-w-3/4 mx-auto p-6 sm:p-10 text-white">
+    <h1
+      class="mb-10 text-center sm:text-left sm:text-xl md:text-3xl font-barlow-condensed tracking-[2px] uppercase"
+    >
+      <span class="mr-4 text-blue-100/50 font-bold" aria-hidden="true">02</span
+      >Meet your crew
+    </h1>
+    <div class="flex flex-col md:flex-row items-center lg:gap-20">
+      <article class="text-center md:text-left">
+        <h2
+          class="text-lg sm:text-2xl md:text-3xl font-bellefair text-blue-100 uppercase"
+        >
+          {role}
+          <div
+            class="mt-2 mb-6 text-2xl sm:text-4xl md:text-6xl font-bellefair text-white uppercase"
+          >
+            {name}
+          </div>
+        </h2>
+        <p
+          class="text-base/7 md:text-lg/8 font-barlow text-blue-100 text-balance"
+        >
+          {bio}
+        </p>
+        <ul class="flex gap-6 md:gap-10">
+          {
+            links.map((link) => (
+              <li
+                data-active={link.id === id}
+                class="text-gray-500/50 data-[active=true]:text-white text-6xl md:text-8xl hover:text-white/50"
+              >
+                <a href={link.href}>.</a>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+      <div class="min-w-[40%]">
+        <img src={image.src} alt={name} class="object-contain max-h-[600px]" />
+      </div>
+    </div>
+  </main>
+</BaseLayout>

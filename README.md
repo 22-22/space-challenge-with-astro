@@ -145,3 +145,18 @@ Image optimisation (images for different screens, gpt advice)
 ```
 
 align-content: start ===> on grid container, for larger screens for elements not to stretch too far away from each other (i just did max-w)
+
+```
+.section-content {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap: 1rem;
+}
+```
+
+```
+ <picture class="flex flex-1 justify-center">
+     <source srcset={images.webp.src} type="image/webp" />
+     <img src={images.png.src} alt={name} class="max-w-[70%]" />
+ </picture>
+```

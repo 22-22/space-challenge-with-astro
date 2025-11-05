@@ -19,9 +19,16 @@ ASPECT-RATIO (used for a circular button)
 The aspect-ratio CSS property allows you to define the desired width-to-height ratio of an element's box.
 
 ```
+display: flex; // or inline-grid
 place-items: center;
 padding: 0 2em;
 aspect-ratio: 1;
+```
+
+or in TW:
+
+```
+flex place-items-center px-4 aspect-square
 ```
 
 PLACE-ITEMS: align-items and justify-items

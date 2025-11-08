@@ -1,0 +1,89 @@
+---
+import Header from "../../components/Header.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import mobileBg from "../../assets/technology/background-technology-mobile.jpg";
+import tabletBg from "../../assets/technology/background-technology-tablet.jpg";
+import desktopBg from "../../assets/technology/background-technology-desktop.jpg";
+import { techData } from "../../constants.ts";
+
+export function getStaticPaths() {
+  return techData.map((tech) => {
+    return {
+      params: { id: tech.id },
+      props: tech,
+    };
+  });
+}
+
+const links = techData.map((tech) => {
+  return {
+    id: tech.id,
+    href: `/technology/${tech.id}`,
+  };
+});
+
+const { images, name, description } = Astro.props;
+
+const pageTitle = "Technology";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <picture>
+    <source srcset={desktopBg.src} media="(min-width: 768px)" />
+    <source srcset={tabletBg.src} media="(min-width: 640px)" />
+    <img
+      class="fixed inset-0 w-full h-full object-cover -z-10"
+      src={mobileBg.src}
+      alt="starry sky"
+      fetchpriority="high"
+    />
+  </picture>
+  <Header />
+  <main class="md:ml-auto md:w-[80%] py-8 text-white">
+    <h1
+      class="mb-10 text-center sm:text-left sm:text-xl md:text-3xl font-barlow-condensed tracking-[2px] uppercase"
+    >
+      <span class="mr-4 text-blue-100/50 font-bold" aria-hidden="true">03</span>
+      space launch 101
+    </h1>
+    <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+      <picture class="w-full">
+        <source srcset={images.portrait.src} media="(min-width: 768px)" />
+        <img
+          class="w-full h-full object-cover"
+          src={images.landscape.src}
+          alt={name}
+        />
+      </picture>
+      <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center px-4">
+        <ul class="flex md:flex-col gap-4 md:gap-8">
+          {
+            links.map((link) => (
+              <li>
+                <a
+                  class="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 border border-white rounded-full font-bellefair text-lg sm:text-2xl md:text-3xl"
+                  href={link.href}
+                >
+                  {link.id}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <article class="max-w-[75%] text-center md:text-left">
+          <h2
+            class="mb-4 font-bellefair text-lg sm:text-2xl md:text-3xl text-white/50 uppercase"
+          >
+            The terminology...
+          </h2>
+          <p
+            class="mb-4 md:mb-6 font-bellefair text-2xl sm:text-4xl md:text-5xl uppercase"
+          >
+            {name}
+          </p>
+          <p>{description}</p>
+        </article>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

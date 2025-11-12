@@ -22,7 +22,7 @@ const links = techData.map((tech) => {
   };
 });
 
-const { images, name, description } = Astro.props;
+const { id, name, images, description } = Astro.props;
 
 const pageTitle = "Technology";
 ---
@@ -61,7 +61,10 @@ const pageTitle = "Technology";
             links.map((link) => (
               <li>
                 <a
-                  class="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 border border-white rounded-full font-bellefair text-lg sm:text-2xl md:text-3xl"
+                  data-active={link.id === id}
+                  class="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 
+                  border border-white/50 rounded-full font-bellefair text-lg sm:text-2xl md:text-3xl
+                  data-[active=true]:bg-white data-[active=true]:text-black"
                   href={link.href}
                 >
                   {link.id}

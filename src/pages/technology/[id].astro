@@ -5,6 +5,7 @@ import mobileBg from "../../assets/technology/background-technology-mobile.jpg";
 import tabletBg from "../../assets/technology/background-technology-tablet.jpg";
 import desktopBg from "../../assets/technology/background-technology-desktop.jpg";
 import { techData } from "../../constants.ts";
+import type { ImageMetadata } from "astro";
 
 export function getStaticPaths() {
   return techData.map((tech) => {
@@ -15,14 +16,24 @@ export function getStaticPaths() {
   });
 }
 
+interface Props {
+  id: number;
+  name: string;
+  images: {
+    portrait: ImageMetadata;
+    landscape: ImageMetadata;
+  };
+  description: string;
+}
+
+const { id, name, images, description } = Astro.props;
+
 const links = techData.map((tech) => {
   return {
     id: tech.id,
     href: `/technology/${tech.id}`,
   };
 });
-
-const { id, name, images, description } = Astro.props;
 
 const pageTitle = "Technology";
 ---

@@ -22,7 +22,7 @@ const currentPath = Astro.url.pathname;
   >
     <li
       data-active={currentPath === "/"}
-      class="py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
+      class="md:py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
     >
       <a href="/"
         ><span class="sm:hidden md:inline mr-3 font-bold" aria-hidden="true"
@@ -32,7 +32,7 @@ const currentPath = Astro.url.pathname;
     </li>
     <li
       data-active={currentPath.startsWith("/destination")}
-      class="py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
+      class="md:py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
     >
       <a href="/destination/mars"
         ><span class="sm:hidden md:inline mr-3 font-bold" aria-hidden="true"
@@ -42,7 +42,7 @@ const currentPath = Astro.url.pathname;
     </li>
     <li
       data-active={currentPath.startsWith("/crew")}
-      class="py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
+      class="md:py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
     >
       <a href="/crew/1"
         ><span class="sm:hidden md:inline mr-3 font-bold" aria-hidden="true"
@@ -52,7 +52,7 @@ const currentPath = Astro.url.pathname;
     </li>
     <li
       data-active={currentPath.startsWith("/technology")}
-      class="py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
+      class="md:py-10 border-b-2 border-transparent data-[active=true]:border-white hover:border-b-2 hover:border-white/40"
     >
       <a href="/technology/1"
         ><span class="sm:hidden md:inline mr-3 font-bold" aria-hidden="true"

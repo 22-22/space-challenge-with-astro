@@ -51,7 +51,7 @@ const pageTitle = "Crew";
     />
   </picture>
   <Header />
-  <main class="lg:max-w-3/4 mx-auto p-6 sm:p-10 text-white">
+  <main class="lg:max-w-[80%] mx-auto px-6 sm:px-10 text-white">
     <h1
       class="mb-10 text-center sm:text-left sm:text-xl md:text-3xl font-barlow-condensed tracking-[2px] uppercase"
     >
@@ -60,7 +60,7 @@ const pageTitle = "Crew";
     </h1>
     <div class="flex flex-col md:flex-row items-center gap-12">
       <article
-        class="md:block flex flex-1 flex-col items-center text-center md:text-left"
+        class="md:w-[75%] md:block flex flex-col items-center text-center md:text-left"
       >
         <header class="mb-8">
           <h2
@@ -94,9 +94,13 @@ const pageTitle = "Crew";
           }
         </ul>
       </article>
-      <picture class="flex flex-1 justify-center">
+      <picture>
         <source srcset={images.webp.src} type="image/webp" />
-        <img src={images.png.src} alt={name} class="max-w-[70%]" />
+        <img
+          class="w-[200px] sm:w-[300px] md:w-[390px] 2xl:w-[500px] h-auto object-contain"
+          src={images.png.src}
+          alt={name}
+        />
       </picture>
     </div>
   </main>

@@ -167,3 +167,16 @@ gap: 1rem;
      <img src={images.png.src} alt={name} class="max-w-[70%]" />
  </picture>
 ```
+
+width defined both on picture and img
+
+```
+ <picture class="w-full">
+    <source srcset={images.portrait.src} media="(min-width: 768px)" />
+      <img
+        class="w-full h-full object-cover"
+        src={images.landscape.src}
+        alt={name}
+      />
+  </picture>
+```
